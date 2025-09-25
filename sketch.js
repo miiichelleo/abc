@@ -30,6 +30,17 @@ function setup() {
 
   audio.loop();
   frameRate(60);
+  let startButton = createButton('▶ Start Audio');
+  startButton.position(20, 20);
+  startButton.style('font-size', '20px');
+  startButton.mousePressed(() => {
+    userStartAudio().then(() => {
+      if (!audio.isPlaying()) {
+        audio.loop();
+      }
+      startButton.remove();
+    });
+  });
 }
 
 
